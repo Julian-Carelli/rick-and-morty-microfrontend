@@ -1,19 +1,19 @@
 export interface CharacterServiceInterface {
-    getAllCharacters: () => CharactersResponse | unknown
-    getCharacterById: (characterId: string) => CharactersResponse | unknown
+  getAllCharacters: () => Promise<CharactersResponse | string>;
+  getCharacterById: (characterId: string) => Promise<CharactersResponse> | string;
 }
 
-type CharactersResponse = {
-    results: Characters[]
+export type CharactersResponse = {
+  results: Characters[]
 }
 
 export type Characters = {
-    id: number;
-    name: string;
-    species: string;
-    gender: string;
-    image: string;
-    status: string;
+  id: number
+  name: string
+  species: string
+  gender: string
+  image: string
+  status: string
 }
 
 export type ApiResponse = Characters[]

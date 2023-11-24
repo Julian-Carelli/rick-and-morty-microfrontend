@@ -11,7 +11,7 @@ export default defineConfig({
       exposes: {
         "./Data": "./src/Data.tsx"
       },
-      shared: ["react", "react-dom"]
+      shared: ["react", "react-dom", "styled-components"]
     })
   ],
   server: {

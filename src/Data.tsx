@@ -1,7 +1,5 @@
 const Data = () => {
-    return (
-        <div>hello world</div>
-    )
+  return <div>hello world</div>
 }
 
 export default Data
