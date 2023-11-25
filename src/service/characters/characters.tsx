@@ -1,3 +1,4 @@
+import env from '../../env/env'
 import {
   ApiResponse,
   CharacterServiceInterface,
@@ -11,7 +12,7 @@ class CharactersService implements CharacterServiceInterface {
     try {
       const { page } = paginateOptions
       const response = await fetch(
-        `https://rickandmortyapi.com/api/character?page=${page}`,
+        `${env.REACT_APP_RICK_AND_MORTY}character?page=${page}`,
       )
       const data = await response.json()
 
@@ -28,7 +29,7 @@ class CharactersService implements CharacterServiceInterface {
         results: [],
       }
       const response = await fetch(
-        `https://rickandmortyapi.com/api/character/${characterId}`,
+        `${env.REACT_APP_RICK_AND_MORTY}character/${characterId}`,
       )
 
       const data = await response.json()

@@ -6,6 +6,7 @@ import {
 } from '../../service/characters/characters-interface'
 import CharactersService from '../../service/characters/characters'
 import ReactPaginate from 'react-paginate'
+import { StyledCharacterList } from './CharacterGallery.styles'
 
 const charactersService = new CharactersService()
 
@@ -36,19 +37,13 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
   }
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>Ricky And Morty Characters</h1>
-      <div
-        style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
-      >
+    <StyledCharacterList>
+      <h1>Ricky And Morty Characters</h1>
+      <div className="character-container">
         {characters.map((character) => (
-          <div key={character.id} style={{ margin: 8 }}>
+          <div key={character.id} className="character-card">
             <Link to={`${path}/${character.id}`}>
-              <img
-                src={character.image}
-                alt={character.name}
-                style={{ width: 300, height: 300 }}
-              />
+              <img src={character.image} alt={character.name} />
             </Link>
             <p>{character.name}</p>
             <p>{character.species}</p>
@@ -65,7 +60,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
           />
         )}
       </div>
-    </div>
+    </StyledCharacterList>
   )
 }
 
