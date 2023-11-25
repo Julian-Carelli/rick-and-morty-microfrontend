@@ -7,15 +7,13 @@ import {
 class CharactersService implements CharacterServiceInterface {
   async getAllCharacters() {
     try {
-      const response = await fetch(
-        'https://rickandmortyapi.com/api/character',
-      )
+      const response = await fetch('https://rickandmortyapi.com/api/character')
       const data = await response.json()
 
       return buildResponse(data.results)
     } catch (error) {
       console.error('Error fetching all characters', error)
-      return Promise.reject("Error fetching all characters");
+      return Promise.reject('Error fetching all characters')
     }
   }
 
@@ -27,11 +25,11 @@ class CharactersService implements CharacterServiceInterface {
       )
       const data = await response.json()
       characterArray.push(data)
-      
+
       return buildResponse(characterArray)
     } catch (error) {
       console.error(`Error fetching character with ID ${characterId}:`, error)
-      return Promise.reject(`Error fetching character with ID ${characterId}`);
+      return Promise.reject(`Error fetching character with ID ${characterId}`)
     }
   }
 }

@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "lint": "eslint src --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "dev": "vite",
+    "format": "prettier --write .",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "dev": "vite"
+    "docker:create": "docker-compose -f docker-compose.yml up",
+    "docker:rebuild": "docker-compose up --build"
   },
   "dependencies": {
     "react": "^18.2.0",

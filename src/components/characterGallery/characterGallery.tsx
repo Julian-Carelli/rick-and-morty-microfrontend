@@ -1,34 +1,40 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Characters } from '../../service/characters/characters-interface';
-import CharactersService from '../../service/characters/characters';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Characters } from '../../service/characters/characters-interface'
+import CharactersService from '../../service/characters/characters'
 
 const charactersService = new CharactersService()
 
-const CharacterGallery = () => {
-  const [characters, setCharacters] = useState<Characters[]>([]);
+const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
+  const [characters, setCharacters] = useState<Characters[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await charactersService.getAllCharacters()
-        setCharacters(response.results);
+        setCharacters(response.results)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div>
-      <h1>Ricky And Morty Characters</h1>
-      <div>
+      <h1 style={{ textAlign: 'center' }}>Ricky And Morty Characters</h1>
+      <div
+        style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
+      >
         {characters.map((character) => (
-          <div key={character.id}>
-            <Link to={`/characters/${character.id}`}>
-              <img src={character.image} alt={character.name} />
+          <div key={character.id} style={{ margin: 8 }}>
+            <Link to={`${path}/${character.id}`}>
+              <img
+                src={character.image}
+                alt={character.name}
+                style={{ width: 300, height: 300 }}
+              />
             </Link>
             <p>{character.name}</p>
             <p>{character.species}</p>
@@ -36,7 +42,7 @@ const CharacterGallery = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CharacterGallery;
+export default CharacterGallery
