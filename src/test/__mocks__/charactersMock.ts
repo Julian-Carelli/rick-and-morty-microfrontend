@@ -7,7 +7,7 @@ export const getCharacterMockResponse = {
   image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
 }
 
-export const getAllCharactersMockResponse = {
+export const getAllCharactersPage1MockResponse = {
   info: {
     count: 826,
     pages: 42,
@@ -38,6 +38,49 @@ export const getAllCharactersMockResponse = {
       name: 'Beth Smith',
       species: 'Human',
       image: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
+    },
+  ],
+}
+
+export const getAllCharactersPage2MockResponse = {
+  info: {
+    count: 826,
+    pages: 42,
+    next: 'https://rickandmortyapi.com/api/character?page=3',
+    prev: 'https://rickandmortyapi.com/api/character?page=1',
+  },
+  results: [
+    {
+      id: 21,
+      name: 'Aqua Morty',
+      status: 'unknown',
+      species: 'Humanoid',
+      gender: 'Male',
+      image: 'https://rickandmortyapi.com/api/character/avatar/21.jpeg',
+    },
+    {
+      id: 22,
+      name: 'Aqua Rick',
+      status: 'unknown',
+      species: 'Humanoid',
+      gender: 'Male',
+      image: 'https://rickandmortyapi.com/api/character/avatar/22.jpeg',
+    },
+    {
+      id: 23,
+      name: 'Arcade Alien',
+      status: 'unknown',
+      species: 'Alien',
+      gender: 'Male',
+      image: 'https://rickandmortyapi.com/api/character/avatar/23.jpeg',
+    },
+    {
+      id: 24,
+      name: 'Armagheadon',
+      status: 'Alive',
+      species: 'Alien',
+      gender: 'Male',
+      image: 'https://rickandmortyapi.com/api/character/avatar/24.jpeg',
     },
   ],
 }

@@ -57,6 +57,8 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
             onPageChange={handlePageClick}
             containerClassName={'pagination'}
             activeClassName={'active'}
+            previousClassName={'previous-arrow'}
+            nextClassName={'next-arrow'}
           />
         )}
       </div>

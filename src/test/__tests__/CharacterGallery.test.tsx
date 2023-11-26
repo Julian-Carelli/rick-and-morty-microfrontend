@@ -1,13 +1,20 @@
-import { render, act, waitFor, screen } from '@testing-library/react'
+import { render, act, waitFor, screen, fireEvent } from '@testing-library/react'
 import fetchMock from 'jest-fetch-mock'
 import CharacterGallery from '../../components/CharacterGallery/CharacterGallery'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
-import { getAllCharactersMockResponse } from '../__mocks__/charactersMock'
+import {
+  getAllCharactersPage1MockResponse,
+  getAllCharactersPage2MockResponse,
+} from '../__mocks__/charactersMock'
 
 fetchMock.enableMocks()
 
+beforeEach(() => {
+  fetchMock.resetMocks()
+})
+
 test('render component', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(getAllCharactersMockResponse))
+  fetchMock.mockResponseOnce(JSON.stringify(getAllCharactersPage1MockResponse))
 
   await act(async () => {
     render(
@@ -27,6 +34,57 @@ test('render component', async () => {
     const characterName4Element = screen.getByText('Beth Smith')
 
     expect(CharacterGalleryTitle).toBeTruthy()
+    expect(characterNameElement).toBeTruthy()
+    expect(characterName2Element).toBeTruthy()
+    expect(characterName3Element).toBeTruthy()
+    expect(characterName4Element).toBeTruthy()
+  })
+})
+
+test('Render component after clicking the next arrow', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify(getAllCharactersPage1MockResponse))
+
+  await act(async () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<CharacterGallery />} />
+        </Routes>
+      </MemoryRouter>,
+    )
+  })
+
+  await waitFor(() => {
+    const CharacterGalleryTitle = screen.getByText('Rick And Morty Characters')
+    const characterNameElement = screen.getByText('Rick Sanchez')
+    const nextButton = document.querySelector('.next-arrow')
+
+    expect(CharacterGalleryTitle).toBeTruthy()
+    expect(characterNameElement).toBeTruthy()
+
+    if (nextButton) {
+      fireEvent.click(nextButton)
+    }
+  })
+
+  fetchMock.mockResponseOnce(JSON.stringify(getAllCharactersPage2MockResponse))
+
+  await act(async () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<CharacterGallery />} />
+        </Routes>
+      </MemoryRouter>,
+    )
+  })
+
+  await waitFor(() => {
+    const characterNameElement = screen.getByText('Aqua Morty')
+    const characterName2Element = screen.getByText('Aqua Rick')
+    const characterName3Element = screen.getByText('Arcade Alien')
+    const characterName4Element = screen.getByText('Armagheadon')
+
     expect(characterNameElement).toBeTruthy()
     expect(characterName2Element).toBeTruthy()
     expect(characterName3Element).toBeTruthy()
