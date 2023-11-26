@@ -1,15 +1,13 @@
 version: '3.8'
 
 services:
-  app:
-    container_name: ricky-and-morty-microfrontend-container
-    image: ricky-and-morty-microfrontend-container
-    environment:
-      - REACT_APP_API_KEY=${REACT_APP_API_KEY}
-    build:
-      context: .
-      target: development
+  vite_docker:
+    container_name: rick-and-morty-microfrontend-container
+    entrypoint: /bin/sh
+    image: node:alpine
     volumes:
-      - ./src:/app/src
+      - .:/app
+    tty: true
     ports:
       - 3005:3005
+    working_dir: /app
