@@ -8,6 +8,7 @@ import CharactersService from '../../service/characters/characters'
 import ReactPaginate from 'react-paginate'
 import { StyledCharacterList } from './CharacterGallery.styles'
 import { useTranslation } from 'react-i18next'
+import LoadingButton from '../LoadingButton/LoadingButton'
 
 const charactersService = new CharactersService()
 
@@ -15,10 +16,12 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
   const [characters, setCharacters] = useState<Characters[]>([])
   const [paginate, setPaginate] = useState<Paginate>()
   const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation('translations')
 
   useEffect(() => {
+    setIsLoading(true)
     const fetchData = async (currentPage: number) => {
       try {
         const response = await charactersService.getAllCharacters({
@@ -27,17 +30,19 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
         })
         setCharacters(response.results)
         setPaginate(response.paginate)
+        setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
     }
-
     fetchData(currentPage)
   }, [currentPage])
 
   const handlePageClick = (selectedPage: { selected: number }) => {
     setCurrentPage(selectedPage.selected + 1)
   }
+
+  if (isLoading) return <LoadingButton />
 
   return (
     <StyledCharacterList>
