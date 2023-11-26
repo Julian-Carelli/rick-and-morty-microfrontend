@@ -38,7 +38,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
 
   return (
     <StyledCharacterList>
-      <h1>Ricky And Morty Characters</h1>
+      <h1>Rick And Morty Characters</h1>
       <div className="character-container">
         {characters.map((character) => (
           <div key={character.id} className="character-card">

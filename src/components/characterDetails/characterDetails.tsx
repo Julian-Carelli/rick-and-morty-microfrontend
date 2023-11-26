@@ -46,10 +46,9 @@ const CharacterDetails = () => {
             <img src={item.image} />
           </div>
           <div>
-            <p>Species: {item.species}</p>
-            <p>Gender: {item.gender}</p>
-            <p>Species: {item.species}</p>
-            <p>Status: {item.status}</p>
+            <p>{item.species}</p>
+            <p>{item.gender}</p>
+            <p>{item.status}</p>
           </div>
         </div>
       ))}

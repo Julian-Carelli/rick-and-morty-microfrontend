@@ -82,7 +82,7 @@ button:focus-visible {
 }
 
 .pagination a:hover {
-  background-color: #f1f1f1;
+  background-color: #ddd;
 }
 
 .active a {
