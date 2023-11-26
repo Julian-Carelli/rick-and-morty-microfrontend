@@ -1,6 +1,8 @@
 import { render, act, waitFor, screen, fireEvent } from '@testing-library/react'
 import fetchMock from 'jest-fetch-mock'
 import CharacterGallery from '../../components/CharacterGallery/CharacterGallery'
+import { I18nextProvider } from 'react-i18next'
+import i18n from 'i18next'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import {
   getAllCharactersPage1MockResponse,
@@ -18,16 +20,18 @@ test('render component', async () => {
 
   await act(async () => {
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
-          <Route path="/" element={<CharacterGallery />} />
-        </Routes>
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter initialEntries={['/']}>
+          <Routes>
+            <Route path="/" element={<CharacterGallery />} />
+          </Routes>
+        </MemoryRouter>
+      </I18nextProvider>,
     )
   })
 
   await waitFor(() => {
-    const CharacterGalleryTitle = screen.getByText('Rick And Morty Characters')
+    const CharacterGalleryTitle = screen.getByText('Personajes de Rick y Morty')
     const characterNameElement = screen.getByText('Rick Sanchez')
     const characterName2Element = screen.getByText('Morty Smith')
     const characterName3Element = screen.getByText('Summer Smith')
@@ -46,16 +50,18 @@ test('Render component after clicking the next arrow', async () => {
 
   await act(async () => {
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
-          <Route path="/" element={<CharacterGallery />} />
-        </Routes>
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter initialEntries={['/']}>
+          <Routes>
+            <Route path="/" element={<CharacterGallery />} />
+          </Routes>
+        </MemoryRouter>
+      </I18nextProvider>,
     )
   })
 
   await waitFor(() => {
-    const CharacterGalleryTitle = screen.getByText('Rick And Morty Characters')
+    const CharacterGalleryTitle = screen.getByText('Personajes de Rick y Morty')
     const characterNameElement = screen.getByText('Rick Sanchez')
     const nextButton = document.querySelector('.next-arrow')
 
@@ -71,11 +77,13 @@ test('Render component after clicking the next arrow', async () => {
 
   await act(async () => {
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
-          <Route path="/" element={<CharacterGallery />} />
-        </Routes>
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter initialEntries={['/']}>
+          <Routes>
+            <Route path="/" element={<CharacterGallery />} />
+          </Routes>
+        </MemoryRouter>
+      </I18nextProvider>,
     )
   })
 
