@@ -19,5 +19,5 @@ jobs:
         run: yarn install
       - name: Build page
         run: yarn run build
-        # env:
-        # REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+      - name: Testing
+        run: yarn run test
