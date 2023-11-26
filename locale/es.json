@@ -1,0 +1,39 @@
+{
+    "translations": {
+        "components": {
+            "CharacterGallery": {
+                "RickAndMorty": {
+                    "title": "Personajes de Rick y Morty",
+                    "character": {
+                        "species": {
+                            "Human": "Humano",
+                            "Alien": "Extraterrestre",
+                            "Mythological Creature": "Criatura Mitológica",
+                            "Humanoid": "Humanoide",
+                            "unknown": "Desconocido"
+                        },
+                        "gender": {
+                            "Male": "Masculino",
+                            "Female": "Femenino",
+                            "Genderless": "Sin género"
+                        },
+                        "status": {
+                            "Alive": "Vivo",
+                            "Dead": "Muerto",
+                            "unknown": "Desaparecido"
+                        }
+                    }
+                },
+                "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "CharacterDetails": {
+                "backButton": {
+                    "title": "Regresar a la Home"
+                }
+            }
+        }
+    }
+}

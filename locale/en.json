@@ -1,0 +1,39 @@
+{
+    "translations": { 
+        "components": {
+            "CharacterGallery": {
+                "RickAndMorty": {
+                    "title": "Rick And Morty Characters",
+                    "character": {
+                        "species": {
+                            "Human": "Human",
+                            "Alien": "Alien",
+                            "Mythological Creature": "Mythological Creature",
+                            "Humanoid": "Humanoid",
+                            "unknown": "unknown"
+                        },
+                        "gender": {
+                            "Male": "Male",
+                            "Female": "Female",
+                            "Genderless": "Genderless"
+                        },
+                        "status": {
+                            "Alive": "Alive",
+                            "Dead": "Dead",
+                            "unknown": "Disappeared"
+                        }
+                    }
+                },
+                "paginate": {
+                    "next": "Next",
+                    "previous": "Previous"
+                }
+            },
+            "CharacterDetails": {
+                "backButton": {
+                    "title": "Return to Home"
+                }
+            }
+        }
+    }
+}

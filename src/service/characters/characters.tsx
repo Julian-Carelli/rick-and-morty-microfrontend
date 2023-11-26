@@ -6,6 +6,8 @@ import {
   PaginateOptions,
 } from './characters-interface'
 
+const allowedSpecies = ['Human', 'Alien', 'Mythological Creature', 'Humanoid']
+
 class CharactersService implements CharacterServiceInterface {
   public async getAllCharacters(paginateOptions: PaginateOptions) {
     try {
@@ -81,10 +83,17 @@ const mapToCharacter = (character: Characters) => {
     id: character.id,
     name: character.name,
     image: character.image,
-    species: character.species,
+    species: filterBySpecies(character.species),
     gender: character.gender,
     status: character.status,
   }
+}
+
+const filterBySpecies = (species: string) => {
+  if (!allowedSpecies.includes(species)) {
+    return 'unknown'
+  }
+  return species
 }
 
 export default CharactersService

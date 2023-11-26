@@ -7,6 +7,7 @@ import {
 import CharactersService from '../../service/characters/characters'
 import ReactPaginate from 'react-paginate'
 import { StyledCharacterList } from './CharacterGallery.styles'
+import { useTranslation } from 'react-i18next'
 
 const charactersService = new CharactersService()
 
@@ -14,6 +15,8 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
   const [characters, setCharacters] = useState<Characters[]>([])
   const [paginate, setPaginate] = useState<Paginate>()
   const [currentPage, setCurrentPage] = useState(1)
+
+  const { t } = useTranslation('translations')
 
   useEffect(() => {
     const fetchData = async (currentPage: number) => {
@@ -38,7 +41,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
 
   return (
     <StyledCharacterList>
-      <h1>Rick And Morty Characters</h1>
+      <h1>{t('components.CharacterGallery.RickAndMorty.title')}</h1>
       <div className="character-container">
         {characters.map((character) => (
           <div key={character.id} className="character-card">
@@ -46,7 +49,11 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
               <img src={character.image} alt={character.name} />
             </Link>
             <p>{character.name}</p>
-            <p>{character.species}</p>
+            <p>
+              {t(
+                `components.CharacterGallery.RickAndMorty.character.species.${character.species}`,
+              )}
+            </p>
           </div>
         ))}
         {paginate && (
@@ -59,6 +66,8 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
             activeClassName={'active'}
             previousClassName={'previous-arrow'}
             nextClassName={'next-arrow'}
+            previousLabel={t('components.CharacterGallery.paginate.previous')}
+            nextLabel={t('components.CharacterGallery.paginate.next')}
           />
         )}
       </div>
