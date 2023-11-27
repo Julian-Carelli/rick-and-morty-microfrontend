@@ -1,6 +1,10 @@
 {
     "translations": { 
         "components": {
+            "pageError": {
+                "pageNotFound": "Page not found!",
+                "characterNotFound": "Character not found!"
+            },
             "CharacterGallery": {
                 "RickAndMorty": {
                     "title": "Rick And Morty Characters",

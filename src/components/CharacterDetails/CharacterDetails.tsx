@@ -42,7 +42,9 @@ const CharacterDetails = () => {
     )
 
   if (!character?.results || !character?.results[0].id) {
-    return <NotFoundMessage />
+    return (
+      <NotFoundMessage text={t('components.pageError.characterNotFound')} />
+    )
   }
   return (
     <StyledCharacterDetail>
