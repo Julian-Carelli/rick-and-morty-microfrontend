@@ -71,6 +71,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
             activeClassName={'active'}
             previousClassName={'previous-arrow'}
             nextClassName={'next-arrow'}
+            initialPage={currentPage - 1}
             previousLabel={t('components.CharacterGallery.paginate.previous')}
             nextLabel={t('components.CharacterGallery.paginate.next')}
           />
